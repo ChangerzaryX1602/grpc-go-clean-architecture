@@ -2,8 +2,12 @@ package server
 
 import (
 	"context"
+	"errors"
 	"users/api/pb"
 	"users/internal/usecase"
+	"users/utils"
+
+	helpers "github.com/zercle/gofiber-helpers"
 )
 
 type UserServer struct {
@@ -29,6 +33,9 @@ func (s *UserServer) GetUser(ctx context.Context, req *pb.GetUserRequest) (*pb.G
 	return response, nil
 }
 func (s *UserServer) ListUsers(ctx context.Context, req *pb.Pagination) (*pb.ListUsersResponse, error) {
+	if req.GetLimit() > 200 {
+		return nil, utils.NewErrorWithSource(errors.New("limit must be less than 200"), helpers.WhereAmI())
+	}
 	response, err := s.usecase.ListUsers(req)
 	if err != nil {
 		return nil, err
