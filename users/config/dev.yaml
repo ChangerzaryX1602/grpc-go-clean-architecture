@@ -1,0 +1,13 @@
+grpc:
+  port: 50051
+db:
+  postgres:
+    sock: "/var/run/postgresql"
+    host: "localhost"
+    port: 5432
+    username: "test"
+    password: "test"
+    db_name: "test"
+    conn:
+      min: 1
+      max: 2
