@@ -41,9 +41,8 @@ func (u *userUsecase) GetUser(req *pb.GetUserRequest) (*pb.GetUserResponse, erro
 		return nil, err
 	}
 	return &pb.GetUserResponse{
-		Id:    uint32(user.ID),
-		Name:  user.Name,
-		Email: user.Email,
+		Id:   uint32(user.ID),
+		Name: user.Name,
 	}, nil
 }
 func (u *userUsecase) ListUsers(req *pb.Pagination) (*pb.ListUsersResponse, error) {

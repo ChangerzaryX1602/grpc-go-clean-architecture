@@ -17,7 +17,6 @@ message GetUserRequest {
 message GetUserResponse {
     uint32 id = 1;
     string name = 2;
-    string email = 3;
 }
 message Pagination {
     uint32 limit = 1;
